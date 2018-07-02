@@ -1,0 +1,2 @@
+Create a QR code to add calendar 
+Create a Java script to resize images
