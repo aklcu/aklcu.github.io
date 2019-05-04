@@ -38,4 +38,4 @@ print("Successfully wrote new index.html...")
 file.close()
 print("Completed.")
 
-output = subprocess.call(['commit.sh'])
+output = subprocess.call(['commit.bat'])
