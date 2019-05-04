@@ -1,4 +1,5 @@
 import xlrd
+import subprocess
 
 workbook = xlrd.open_workbook("ACUL MASTER Draw Spring 2018.xlsx")
 ws = workbook.sheet_by_index(1)
@@ -37,3 +38,4 @@ print("Successfully wrote new index.html...")
 file.close()
 print("Completed.")
 
+output = subprocess.call(['commit.sh'])
