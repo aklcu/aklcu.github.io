@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Auckland Corporate Ultimate League</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+    type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/landing-page.min.css" rel="stylesheet">
+
+  <!--Google maps-->
+  <script>
+    function initMap() {
+      var SAP = {
+        lat: -36.855823,
+        lng: 174.758994
+      };
+      var map = new google.maps.Map(
+        document.getElementById('map'), {
+          zoom: 17,
+          center: SAP
+        });
+      var marker = new google.maps.Marker({
+        position: SAP,
+        map: map
+      });
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCyj9r97kHgy2b8NXs8u_FOGElLACzWgg&callback=initMap">
+  </script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">ACUL</a>
+      <a class="btn btn-primary" href="javascript:alert('Registration currently closed.')">Register a team</a>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <!-- @danfreemanphoto https://unsplash.com/photos/m4-wkz4GV04 Thank you :)-->
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">Auckland Corporate Ultimate League</h1>
+          <h2 class="mb-2">Winter 2019</h2>
+          <h3>Registration currently closed</h3>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- League Draw -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="mx-auto text-center">
+        <h1>Current Draw</h1>
+        <h3 id="weekHeader">Week Header</h2>
+          <table class="table table-bordered table-striped table-responsive-sm">
+            <thead>
+              <th scope="col">Time</th>
+              <th scope="col" colspan="4"></th>
+              <th scope="col">Results</th>
+            </thead>
+            <!--subTBodies-->
+          </table>
+          <ul class="pagination" style="justify-content: center;">
+            <li class="page-item" id="pageItemPrev"><a class="page-link"
+                href="javascript:tablePageMove(false);">Previous</a></li>
+            <li class="page-item" id="pageItem1"><a class="page-link" href="javascript:tablePage(1);">1</a></li>
+            <li class="page-item" id="pageItem2"><a class="page-link" href="javascript:tablePage(2);">2</a></li>
+            <li class="page-item" id="pageItem3"><a class="page-link" href="javascript:tablePage(3)">3</a></li>
+            <li class="page-item" id="pageItem4"><a class="page-link" href="javascript:tablePage(4)">4</a></li>
+            <li class="page-item" id="pageItem5"><a class="page-link" href="javascript:tablePage(5)">5</a></li>
+            <li class="page-item" id="pageItem6"><a class="page-link" href="javascript:tablePage(6)">6</a></li>
+            <li class="page-item" id="pageItem7"><a class="page-link" href="javascript:tablePage(7)">7</a></li>
+            <li class="page-item" id="pageItem8"><a class="page-link" href="javascript:tablePage(8)">8</a></li>
+            <li class="page-item" id="pageItemNext"><a class="page-link" href="javascript:tablePageMove(true);">Next</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Table Functions-->
+  <script>
+    var dates = [
+      new Date(2019, 6, 1),
+      new Date(2019, 6, 8),
+      new Date(2019, 6, 15),
+      new Date(2019, 6, 22),
+      new Date(2019, 6, 29),
+      new Date(2019, 7, 5),
+      new Date(2019, 7, 12),
+      new Date(2019, 7, 19)
+    ];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+      "November", "December"
+    ];
+
+    function initTable() {
+      var today = new Date(2019, 6, 5); //setting today as July 5th
+      var nextWeek = dates.findIndex(function (value, index, array) {
+        return value > today;
+      });
+      document.getElementById("weekHeader").innerHTML = "Week " + (nextWeek + 1) + " - " + dates[nextWeek].getDate() +
+        " " + months[dates[nextWeek].getMonth()];
+      tablePage(nextWeek + 1);
+    }
+    initTable();
+
+    function tablePage(pageNum) {
+      var tBodies = document.getElementsByTagName("tbody");
+      var i;
+      for (i = 0; i < tBodies.length; i++) {
+        tBodies[i].style.display = "None";
+      }
+      tBodies[pageNum - 1].style.display = "table-row-group";
+
+      for (i = 0; i < 4; i++) {
+        var scores = tBodies[pageNum - 1].rows[i].cells[i % 2 ? 4 : 5].innerHTML.split(" - ");
+        if (parseInt(scores[0]) > parseInt(scores[1])) {
+          tBodies[pageNum - 1].rows[i].cells[i % 2 ? 1 : 2].className = "table-success"
+        } else if (parseInt(scores[0]) < parseInt(scores[1])) {
+          tBodies[pageNum - 1].rows[i].cells[i % 2 ? 3 : 4].className = "table-success"
+        }
+      }
+
+      var pageItems = document.getElementsByClassName("page-item");
+
+      for (i = 0; i < pageItems.length; i++) {
+        pageItems[i].className = "page-item";
+      }
+      document.getElementById("pageItem" + pageNum).className = "page-item active";
+      if (pageNum == 8) {
+        document.getElementById("pageItemNext").className = "page-item disabled";
+      } else if (pageNum == 1) {
+        document.getElementById("pageItemPrev").className = "page-item disabled";
+      }
+      document.getElementById("weekHeader").innerHTML = "Week " + (pageNum) + " - " + dates[pageNum - 1].getDate() +
+        " " + months[dates[pageNum - 1].getMonth()];
+    }
+
+    function tablePageMove(bool) {
+      var tBodies = document.getElementsByTagName("tbody");
+      var i;
+      for (i = 0; i < tBodies.length; i++) {
+        if (tBodies[i].style.display == "table-row-group" && bool) {
+          tablePage(i + 2)
+          break;
+        }
+        if (tBodies[i].style.display == "table-row-group" && !bool) {
+          tablePage(i)
+          break;
+        }
+      }
+    }
+  </script>
+
+  <!-- Icons Grid -->
+  <section class="features-icons bg-light text-center">
+    <h1>About The League</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-doc m-auto text-primary"></i>
+            </div>
+            <h3>Registration</h3>
+            <p class="lead mb-0">TBC</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-trophy m-auto text-primary"></i>
+            </div>
+            <h3>5-a-side Mixed</h3>
+            <p class="lead mb-0">There must be at least 2 males and 2 females on the field.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-calendar m-auto text-primary"></i>
+            </div>
+            <h3>Monday Nights</h3>
+            <p class="lead mb-0">Eight weeks of games starting when we can get indoor courts D:</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Showcases -->
+  <section class="showcase">
+    <div class="container-fluid p-0">
+      <div class="row no-gutters">
+        <div class="col-lg-6 order-lg-2 text-white showcase-img"
+          style="background-image: url('img/bg-whatisultimate.jpg');">
+          <!-- @zooplankton https://unsplash.com/photos/7t00EM5v87Q -->
+        </div>
+        <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+          <h2>What is Ultimate?</h2>
+          <p class="lead mb-0">It’s an exciting, non-contact team sport, combining the passing skills of Netball and the
+            agility of Soccer, all while throwing a disc! The aim of the game is to complete a pass in the opponent’s
+            end-zone to score a point. A player cannot run while in possession of the disc, however, can pivot from one
+            foot like a netball player to make a pass to a teammate. Fast-paced and competitive or easy going and
+            social, ultimate is a great sport for people of all levels of fitness to enjoy.</p>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-lg-6 text-white showcase-img" id="map"></div>
+        <div class="col-lg-6 my-auto showcase-text">
+          <h2>Where?</h2>
+          <p class="lead mb-0">The league is running at XYZ Gym on Apple Street. Go through the main doors and up the
+            stairs. Bathrooms and water fountain and available for use. Please wear non-marking shoes.</p>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/bg-questions.jpg');">
+        </div>
+        <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+          <!-- @glenncarstenspeters https://unsplash.com/photos/npxXWgQ33ZQ -->
+          <h2>Questions?</h2>
+          <p class="lead mb-0">If you have any questions, please contact us by email on <a
+              href="mailto:aucklandcorporateultimate@gmail.com">aucklandcorporateultimate@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 h-100 text-center my-auto">
+          <p class="text-muted small mb-4 mb-lg-0">&copy; ACUL 2019.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
