@@ -27,6 +27,9 @@ print("Successfully made replacements in templates...")
 file = open("bare.html", "r")
 bare = file.read()
 print("Successfully opened bare.html template...")
+ranks = ["#First", "#Second", "#Third", "#Fourth", "#Fifth", "#Sixth", "#Seventh", "#Eighth"]
+for i in range(2, 10):
+    bare = bare.replace(ranks[i -2], ws.cell(i, 2).value)
 index = bare.replace("<!--subTBodies-->", tbodies)
 print("Successfully replaced tbodies into bare...")
 file.close()
