@@ -73,10 +73,10 @@
   <!-- League Draw -->
   <div class="container mt-5">
     <div class="row">
-      <div class="text-center col-xs-9 mx-auto">
+      <div class="text-center col-xs-8 table-responsive-sm mx-auto">
         <h2>Draw</h1>
         <h4 id="weekHeader">Week Header</h3>
-          <table class="table table-bordered table-striped table-responsive-sm">
+          <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                   <th scope="col">Time</th>
@@ -100,7 +100,7 @@
             </li>
           </ul>
       </div>
-      <div class="text-center col-xs-3 mx-auto">
+      <div class="text-center col-xs-4 mx-auto">
         <h2 class="mb-3">Leaderboard</h2>
         <table class="table table-sm table-bordered">
           <thead class="thead-dark">
@@ -158,7 +158,7 @@
     ];
 
     function initTable() {
-      var today = new Date(2019, 6, 5); //setting today as July 5th -- omit params for real today.
+      var today = new Date(); //setting today as July 5th -- omit params for real today.
       var nextWeek = dates.findIndex(function (value, index, array) {
         return value >= today;
       });
@@ -220,7 +220,7 @@
 
   <!-- Icons Grid -->
   <section class="features-icons bg-light text-center">
-    <h1>About The League</h1>
+    <h2>About The League</h2>
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
@@ -275,7 +275,7 @@
         <div class="col-lg-6 text-white showcase-img" id="map"></div>
         <div class="col-lg-6 my-auto showcase-text">
           <h2>Where?</h2>
-          <p class="lead mb-0">The league is running at XYZ Gym on Apple Street. Go through the main doors and up the
+          <p class="lead mb-0">The league is running at XYZ Gym on Apple Street a.k.a courts not confirmed. Go through the main doors and up the
             stairs. Bathrooms and water fountain and available for use. Please wear non-marking shoes.</p>
         </div>
       </div>

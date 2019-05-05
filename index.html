@@ -73,10 +73,10 @@
   <!-- League Draw -->
   <div class="container mt-5">
     <div class="row">
-      <div class="text-center col-xs-9 mx-auto">
+      <div class="text-center col-xs-8 table-responsive-sm mx-auto">
         <h2>Draw</h1>
         <h4 id="weekHeader">Week Header</h3>
-          <table class="table table-bordered table-striped table-responsive-sm">
+          <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                   <th scope="col">Time</th>
@@ -362,7 +362,7 @@
             </li>
           </ul>
       </div>
-      <div class="text-center col-xs-3 mx-auto">
+      <div class="text-center col-xs-4 mx-auto">
         <h2 class="mb-3">Leaderboard</h2>
         <table class="table table-sm table-bordered">
           <thead class="thead-dark">
@@ -375,28 +375,28 @@
             </thead>
             <tbody id="leaderboard">
               <tr>
-                <td>1st</td><td>1st</td><td>HuckHunters</td></td>
+                <td>1st</td><td>HuckHunters</td><td>4</td><td>28</td>
               </tr>
               <tr>
-                <td>2nd</td><td>2nd</td><td>Frizoo</td></td>
+                <td>2nd</td><td>Frizoo</td><td>4</td><td>3</td>
               </tr>
               <tr>
-                <td>3rd</td><td>3rd</td><td>Vending Machine</td></td>
+                <td>3rd</td><td>Vending Machine</td><td>4</td><td>-29</td>
               </tr>
               <tr>
-                <td>4th</td><td>4th</td><td>Martians</td></td>
+                <td>4th</td><td>Martians</td><td>3</td><td>17</td>
               </tr>
               <tr>
-                <td>5th</td><td>5th</td><td>GHD</td></td>
+                <td>5th</td><td>GHD</td><td>3</td><td>-8</td>
               </tr>
               <tr>
-                <td>6th</td><td>6th</td><td>One Team One Meme</td></td>
+                <td>6th</td><td>One Team One Meme</td><td>2</td><td>6</td>
               </tr>
               <tr>
-                <td>7th</td><td>7th</td><td>ESR and Friends</td></td>
+                <td>7th</td><td>ESR and Friends</td><td>2</td><td>1</td>
               </tr>
               <tr>
-                <td>8th</td><td>8th</td><td>EY Tigers</td></td>
+                <td>8th</td><td>EY Tigers</td><td>2</td><td>-18</td>
               </tr>
             </tbody>
         </table>
@@ -420,7 +420,7 @@
     ];
 
     function initTable() {
-      var today = new Date(2019, 6, 5); //setting today as July 5th -- omit params for real today.
+      var today = new Date(); //setting today as July 5th -- omit params for real today.
       var nextWeek = dates.findIndex(function (value, index, array) {
         return value >= today;
       });
@@ -482,7 +482,7 @@
 
   <!-- Icons Grid -->
   <section class="features-icons bg-light text-center">
-    <h1>About The League</h1>
+    <h2>About The League</h2>
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
@@ -537,7 +537,7 @@
         <div class="col-lg-6 text-white showcase-img" id="map"></div>
         <div class="col-lg-6 my-auto showcase-text">
           <h2>Where?</h2>
-          <p class="lead mb-0">The league is running at XYZ Gym on Apple Street. Go through the main doors and up the
+          <p class="lead mb-0">The league is running at XYZ Gym on Apple Street a.k.a courts not confirmed. Go through the main doors and up the
             stairs. Bathrooms and water fountain and available for use. Please wear non-marking shoes.</p>
         </div>
       </div>
