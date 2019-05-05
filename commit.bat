@@ -1,3 +1,4 @@
+@echo off
 git pull
 git commit -am "Committed via script"
 git push

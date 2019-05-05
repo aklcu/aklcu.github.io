@@ -105,34 +105,36 @@
         <table class="table table-sm table-bordered">
           <thead class="thead-dark">
               <tr>
-                <th scope="col">Name</th>
                 <th scope="col">Rank</th>
+                <th scope="col">Name</th>
+                <th scope="col">Wins</th>
+                <th scope="col">Points +/-</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="leaderboard">
               <tr>
-                <td>#First</td><td>1st</td>
+                <td>1st</td><td>#First</td>
               </tr>
               <tr>
-                <td>#Second</td><td>2nd</td>
+                <td>2nd</td><td>#Second</td>
               </tr>
               <tr>
-                <td>#Third</td><td>3rd</td>
+                <td>3rd</td><td>#Third</td>
               </tr>
               <tr>
-                <td>#Fourth</td><td>4th</td>
+                <td>4th</td><td>#Fourth</td>
               </tr>
               <tr>
-                <td>#Fifth</td><td>5th</td>
+                <td>5th</td><td>#Fifth</td>
               </tr>
               <tr>
-                <td>#Sixth</td><td>6th</td>
+                <td>6th</td><td>#Sixth</td>
               </tr>
               <tr>
-                <td>#Seventh</td><td>7th</td>
+                <td>7th</td><td>#Seventh</td>
               </tr>
               <tr>
-                <td>#Eighth</td><td>8th</td>
+                <td>8th</td><td>#Eighth</td>
               </tr>
             </tbody>
         </table>
@@ -156,9 +158,9 @@
     ];
 
     function initTable() {
-      var today = new Date(2019, 6, 5); //setting today as July 5th
+      var today = new Date(2019, 6, 5); //setting today as July 5th -- omit params for real today.
       var nextWeek = dates.findIndex(function (value, index, array) {
-        return value > today;
+        return value >= today;
       });
       document.getElementById("weekHeader").innerHTML = "Week " + (nextWeek + 1) + " - " + dates[nextWeek].getDate() +
         " " + months[dates[nextWeek].getMonth()];
@@ -170,6 +172,7 @@
       var tBodies = document.getElementsByTagName("tbody");
       var i;
       for (i = 0; i < tBodies.length; i++) {
+        if (tBodies[i].id == "leaderboard") continue;
         tBodies[i].style.display = "None";
       }
       tBodies[pageNum - 1].style.display = "table-row-group";
@@ -202,6 +205,7 @@
       var tBodies = document.getElementsByTagName("tbody");
       var i;
       for (i = 0; i < tBodies.length; i++) {
+        if (tBodies[i].id == "leaderboard") continue;
         if (tBodies[i].style.display == "table-row-group" && bool) {
           tablePage(i + 2)
           break;
